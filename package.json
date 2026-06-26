@@ -1,0 +1,28 @@
+{
+  "name": "restock-engine",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --names \"BACKEND,FRONTEND\" --prefix-colors \"cyan,magenta\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev:frontend": "cd frontend && npm run dev",
+    "postinstall": "prisma generate",
+    "setup": "npm install && cd frontend && npm install && cd .. && npx prisma generate && npx prisma db push",
+    "install:all": "npm install && cd frontend && npm install"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.17.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "recharts": "^3.9.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.1.0",
+    "concurrently": "^8.2.2",
+    "prisma": "^5.17.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.3"
+  }
+}
